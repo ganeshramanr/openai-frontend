@@ -1,24 +1,23 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 
-const OpenAIPage = () => {
-  const OPENAI_API_KEY = "sk-proj-PR6g98ASzQRPbYkwC9vhT3BlbkFJbWRKrNR1168FAhJUbxp9";
+import {config} from '../config';
+
+const OpenAIPage = () => { 
+  const OPENAI_API = config.authApiUrl + "/api/openai/models"
   const [data, setData ] = useState(null);
+  const token = window.localStorage.getItem('token');
 
   useEffect(
     () => {
-      axios
-          .get(`https://api.openai.com/v1/models`, {
-              headers: {
-                  Authorization: `Bearer ${OPENAI_API_KEY}`,
-                  'OpenAI-Organization': 'org-3v5B7uvTJcqvUAjzk3X72t0K',
-                  'OpenAI-Project': 'proj_tzaXe5MRpS1c4DYyXNbfQCrq'
-              }
-          })
-          .then((res) => {
-            setData(res.data.data);
-          })
-          .catch((err) => console.log(err));
+      // API call to our backend, which will get and return openai models
+      axios.get(OPENAI_API, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then((res) => {
+        setData(res.data.data);
+      }).catch((err) => console.log(err));
     },
     []
   );

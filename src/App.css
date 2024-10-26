@@ -19,3 +19,12 @@
 .div-bottom-padding {
   padding-bottom: 1rem;
 }
+
+.settings-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  /* background-color: #f0f2f5; */
+  /* background-image: linear-gradient(to bottom right, #ADD8E6, #D3D3D3); */
+}

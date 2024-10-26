@@ -4,12 +4,9 @@ import axios from 'axios';
 import {config} from '../config';
 import './UserRegistrationPage.css';
 
-const REGISTER_API = config.authApiUrl + "/api/user/register"
+const REGISTER_API = config.authApiUrl + "/api/register"
 
-function LoginPage() {
-
-  
-
+function UserRegistrationPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fname, setFName] = useState('');
@@ -118,4 +115,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default UserRegistrationPage;

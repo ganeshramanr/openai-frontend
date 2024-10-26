@@ -5,7 +5,7 @@ import {config} from '../config'
 import './LoginPage.css';
 
 
-const LOGIN_API = config.authApiUrl + "/api/user/login"
+const LOGIN_API = config.authApiUrl + "/api/login"
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -16,16 +16,16 @@ function LoginPage() {
 
   const handleLogin = (e: any) => {
     e.preventDefault();
-    // Here you would typically send the email and password to your server
-    console.log('Login attempt with:', email, password);
 
     axios
           .post(LOGIN_API, {
             email,
             password
           })
-          .then(() => {
+          .then((res) => {
+            console.log(res.data.token);
             window.localStorage.setItem('user', email);
+            window.localStorage.setItem('token', res.data.token);
             navigate("/home");
           })
           .catch((err) => {
