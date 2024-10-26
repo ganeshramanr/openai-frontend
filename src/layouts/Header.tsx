@@ -1,0 +1,30 @@
+import {useNavigate} from "react-router-dom";
+import './Header.css';
+import logo from '../assets/react.svg'; 
+
+function Header() {
+  const navigate = useNavigate();
+  const user = window.localStorage.getItem('user')
+
+  const handleLogout = () => {
+    window.localStorage.removeItem('user')
+    navigate("/login");
+  }
+
+  return (
+    <div className="dashboard-header">
+      <header className="header">
+        <div className="logo-container">
+          <img src={logo} alt="Logo" className="logo" />
+        </div>
+        <h1 className="title">Dhalisoft</h1>
+        <div className="logout-container">
+          <div className="div-padding-right">Welcome {user}</div>
+          <span className="logout-span" onClick={handleLogout}>Logout</span>
+        </div>
+      </header>
+    </div>
+  );
+}
+
+export default Header;
