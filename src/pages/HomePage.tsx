@@ -1,9 +1,19 @@
+// import { Breadcrumbs, Link } from '@mui/material';
 import './HomePage.css';
 
 function HomePage() {
 
   return (
     <>
+      {/* // TODO Breadcrumbs is sample code
+      <Breadcrumbs aria-label="breadcrumb>" >
+        <Link underline="hover" color="inherit" href="/home">
+          Home
+        </Link>
+        <Link underline="hover" color="inherit" href="/about">
+          About
+        </Link>
+      </Breadcrumbs> */}
       <h2>About Us</h2>
       <section className="widget">
         <p>Our company specializes in rapid, cost-effective MVP development for startups. We understand that time and budget are critical for new ventures, so we've optimized our process to deliver high-quality minimum viable products in the shortest timeframe possible.</p>
