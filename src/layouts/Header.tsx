@@ -9,7 +9,7 @@ function Header() {
   const handleLogout = () => {
     window.localStorage.removeItem('user');
     window.localStorage.removeItem('token');
-    navigate("/login");
+    navigate("/");
   }
 
   return (

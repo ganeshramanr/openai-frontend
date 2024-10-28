@@ -10,7 +10,7 @@ const UnProtectedRoutes = () => {
     !user ? 
     <Outlet /> 
     : 
-    <Navigate to="/" state={{from: location}} replace />
+    <Navigate to="/home" state={{from: location}} replace />
   )
 }
 

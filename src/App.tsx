@@ -16,13 +16,13 @@ function App() {
       <Routes>
         <Route element={<UnProtectedRoutes />} >
           <Route path="register" element={<UserRegistrationPage />} />
-          <Route path="login" element={<LoginPage />} />
+          <Route path="/" element={<LoginPage />} />
         </Route>
         <Route element={<ProtectedRoutes />} >
           <Route element={<MainPage />}>
             <Route path="/openai" element={<OpenAIPage />} />
             <Route path="/settings" element={<SettingsPage />} />
-            <Route path="*" element={<HomePage />} />
+            <Route path="/*" element={<HomePage />} />
           </Route>
         </Route>
       </Routes>

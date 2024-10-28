@@ -60,6 +60,7 @@ const XTable: React.FC<XTableProps> = ({apiUrl}) => {
   );
 
   const handleChangePage = (event: unknown, newPage: number) => {
+    console.log(event);
     setPage(newPage);
   };
 
