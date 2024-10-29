@@ -7,13 +7,16 @@ const ME_API = config.authApiUrl + "/api/user/me"
 const GUEST_EMAIL = import.meta.env.VITE_GUEST_EMAIL || "guest@guest.com";
 
 const SettingsPage = () => {
-  const [email, setEmail] = useState('');
+  const user = window.localStorage.getItem('user') || '';
+  const token = window.localStorage.getItem('token');
+
+  const [email, setEmail] = useState(user);
   const [fname, setFName] = useState('');
   const [lname, setLName] = useState('');
   const [update, setUpdate] = useState(false);
   const [error, setError] = useState('');
 
-  const token = window.localStorage.getItem('token');
+  
   
   useEffect(
     () => {
