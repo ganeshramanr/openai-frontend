@@ -7,7 +7,7 @@ import './LoginPage.css';
 
 
 const LOGIN_API = config.authApiUrl + "/api/login"
-const GUEST_EMAIL = import.meta.env.VITE_GUEST_EMAIL || "guest";
+const GUEST_EMAIL = import.meta.env.VITE_GUEST_EMAIL || "guest@guest.com";
 const GUEST_PASSWORD = import.meta.env.VITE_GUEST_PASSWORD || "easy";
 
 function LoginPage() {

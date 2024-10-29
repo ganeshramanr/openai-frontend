@@ -10,3 +10,7 @@
   margin-top: 0;
   color: #333;
 }
+
+.bottom-padding {
+  padding-bottom: .5rem;
+}

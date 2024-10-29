@@ -101,7 +101,7 @@ function UserRegistrationPage() {
         </div>
 
         { signup ? 
-            <div className='blue-text-padding'>User Registered Successfully.</div>  
+            <div className='blue-text-padding'>User registered successfully.</div>  
             : null
           }
 

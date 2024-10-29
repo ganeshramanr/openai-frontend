@@ -4,6 +4,7 @@ import axios from 'axios';
 import {config} from '../config'
 
 const ME_API = config.authApiUrl + "/api/user/me"
+const GUEST_EMAIL = import.meta.env.VITE_GUEST_EMAIL || "guest@guest.com";
 
 const SettingsPage = () => {
   const [email, setEmail] = useState('');
@@ -80,6 +81,7 @@ const SettingsPage = () => {
                 value={fname}
                 onChange={(e) => setFName(e.target.value)}
                 required
+                disabled={email == GUEST_EMAIL}
               />
             </div>
 
@@ -91,17 +93,20 @@ const SettingsPage = () => {
                 value={lname}
                 onChange={(e) => setLName(e.target.value)}
                 required
+                disabled={email == GUEST_EMAIL}
               />
             </div>
 
-            <div className='div-bottom-padding'>
-              <button type="submit" className="signup-button">
-                Update
-              </button>
-            </div>
-
+            { (email !== GUEST_EMAIL) ? 
+              <div className='div-bottom-padding'>
+                <button type="submit" className="signup-button">
+                  Update
+                </button>
+              </div>
+              : null
+            }
             { update ? 
-              <div className='blue-text-padding'>User Updated Successfully.</div>  
+              <div className='blue-text-padding'>User updated successfully.</div>  
               : null
             }
             { error ? 

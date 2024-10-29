@@ -22,13 +22,13 @@ function HomePage() {
       <section className="widget">
         <h4>Key features of our MVP development service</h4>
         <ul>
-          <li><i>Lean approach:</i> We focus on core functionality to validate your concept quickly</li>
-          <li><i>Agile methodology:</i> Iterative development with frequent feedback loops</li>
-          <li><i>Experienced team:</i> Seasoned developers who specialize in MVP creation</li>
-          <li><i>Affordable pricing:</i> Competitive rates tailored for startup budgets</li>
-          <li><i>Accelerated timeline:</i> Streamlined process to launch your MVP in weeks, not months</li>
-          <li><i>Scalable architecture:</i> Built to grow as your startup evolves</li>
-          <li><i>Technology expertise:</i> Proficiency across web, mobile, and emerging tech stacks</li>
+          <li className='bottom-padding'><i>Lean approach:</i> We focus on core functionality to validate your concept quickly</li>
+          <li className='bottom-padding'><i>Agile methodology:</i> Iterative development with frequent feedback loops</li>
+          <li className='bottom-padding'><i>Experienced team:</i> Seasoned developers who specialize in MVP creation</li>
+          <li className='bottom-padding'><i>Affordable pricing:</i> Competitive rates tailored for startup budgets</li>
+          <li className='bottom-padding'><i>Accelerated timeline:</i> Streamlined process to launch your MVP in weeks, not months</li>
+          <li className='bottom-padding'><i>Scalable architecture:</i> Built to grow as your startup evolves</li>
+          <li className='bottom-padding'><i>Technology expertise:</i> Proficiency across web, mobile, and emerging tech stacks</li>
         </ul>
       </section>
     </>
