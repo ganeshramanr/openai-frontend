@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import {useNavigate, Link} from "react-router-dom";
-import HRef from '@mui/material/Link';
+import {useNavigate} from "react-router-dom";
+import Link from '@mui/material/Link';
 import axios from 'axios';
 import {config} from '../config'
 import './LoginPage.css';
+import XGoogleLogin from '../components/XGoogleLogin';
+import { TableRow } from '@mui/material';
 
 
 const LOGIN_API = config.authApiUrl + "/api/login"
@@ -80,7 +82,7 @@ function LoginPage() {
             required
           />
         </div>
-        <div className='div-bottom-padding'>
+        <div className='form-group'>
           <button type="submit" className="login-button">
             Log In
           </button>
@@ -90,11 +92,23 @@ function LoginPage() {
           : null
         }
 
-        <div className='div-bottom-padding'>
-          <HRef component="button" variant="body2" onClick={() => loginAsGuest()}>Login as guest </HRef>
-        </div>
-
-        <Link to={`/register`}>New User Signup</Link>
+        <TableRow>
+          <td className='right-padding'>
+            <div className='bottom-padding'>
+              <Link component="button" variant="body2" onClick={() => loginAsGuest()}>Guest Login</Link>
+            </div>
+            <div>
+              <XGoogleLogin />
+            </div>
+          </td>
+          <td>
+            <div className='bottom-padding'>
+              <Link component="button" variant="body2" onClick={() => navigate('/register')}>Signup</Link>
+            </div>
+            {/* This component is not needed, remove it later */}
+            <Link component="button" variant="body2" onClick={() => navigate('/help')}></Link>
+          </td>
+        </TableRow>
       </form>
     </div>
   );

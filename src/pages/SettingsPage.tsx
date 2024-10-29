@@ -9,6 +9,7 @@ const GUEST_EMAIL = import.meta.env.VITE_GUEST_EMAIL || "guest@guest.com";
 const SettingsPage = () => {
   const user = window.localStorage.getItem('user') || '';
   const token = window.localStorage.getItem('token');
+  const google = window.localStorage.getItem('google');
 
   const [email, setEmail] = useState(user);
   const [fname, setFName] = useState('');
@@ -18,8 +19,8 @@ const SettingsPage = () => {
 
   
   
-  useEffect(
-    () => {
+  useEffect(() => {
+    if(google !== "true") {
       axios.get(ME_API, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -31,9 +32,8 @@ const SettingsPage = () => {
         setLName(user.lastname);
         console.log(user);
       }).catch((err) => console.log(err));
-    },
-    []
-  );
+    }
+  },[]);
 
   const updateUser = (e: any) => {
     e.preventDefault();
@@ -84,7 +84,7 @@ const SettingsPage = () => {
                 value={fname}
                 onChange={(e) => setFName(e.target.value)}
                 required
-                disabled={email == GUEST_EMAIL}
+                disabled={email == GUEST_EMAIL || google === "true"}
               />
             </div>
 
@@ -96,11 +96,11 @@ const SettingsPage = () => {
                 value={lname}
                 onChange={(e) => setLName(e.target.value)}
                 required
-                disabled={email == GUEST_EMAIL}
+                disabled={email == GUEST_EMAIL || google === "true"}
               />
             </div>
 
-            { (email !== GUEST_EMAIL) ? 
+            { (email !== GUEST_EMAIL && google !== "true") ? 
               <div className='div-bottom-padding'>
                 <button type="submit" className="signup-button">
                   Update
