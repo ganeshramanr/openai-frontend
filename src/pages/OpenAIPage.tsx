@@ -2,7 +2,7 @@ import {config} from '../config';
 import XTable from '../components/XTable';
 
 const OpenAIPage = () => { 
-  const OPENAI_API = config.authApiUrl + "/api/openai/models"
+  const OPENAI_API = config.authApiUrl + "/openai/models"
   
   return (
     <div>

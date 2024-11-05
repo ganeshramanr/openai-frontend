@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 
+import { handleLogout } from '../helpers/utils';
 import {config} from '../config'
 
-const ME_API = config.authApiUrl + "/api/user/me"
+const ME_API = config.authApiUrl + "/user/me"
 const GUEST_EMAIL = import.meta.env.VITE_GUEST_EMAIL || "guest@guest.com";
 
 const SettingsPage = () => {
@@ -20,19 +21,21 @@ const SettingsPage = () => {
   
   
   useEffect(() => {
-    if(google !== "true") {
-      axios.get(ME_API, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }).then((res) => {
-        const user = res.data.data;
-        setEmail(user.email);
-        setFName(user.firstname);
-        setLName(user.lastname);
-        console.log(user);
-      }).catch((err) => console.log(err));
-    }
+    axios.get(ME_API, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((res) => {
+      const user = res.data.data;
+      setEmail(user.email);
+      setFName(user.firstname);
+      setLName(user.lastname);
+    }).catch((err) => {
+      console.log(err)
+      if(err.status == 401) {
+        handleLogout();
+      }
+    });
   },[]);
 
   const updateUser = (e: any) => {

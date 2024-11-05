@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import { handleLogout } from '../helpers/utils';
 import './XTable.css';
 
 import {
@@ -29,8 +30,8 @@ function getTitleCase(text: String) {
 
 function getHeadings(data: {}[]) {
     if(!data || data.length == 0) return [];
-    return Object.keys(data[0]).map((key, index) => {
-        return <th key={index}>{getTitleCase(key)}</th>;
+    return Object.keys(data[0]).map((key) => {
+        return getTitleCase(key);
     });
 }
 
@@ -54,7 +55,12 @@ const XTable: React.FC<XTableProps> = ({apiUrl}) => {
       }).then((res) => {
         console.log(res.data.data);
         setData(res.data.data);
-      }).catch((err) => console.log(err));
+      }).catch((err) => {
+        console.log(err)
+        if(err.status == 401) {
+          handleLogout();
+        }
+      });
     },
     []
   );
@@ -94,8 +100,8 @@ const XTable: React.FC<XTableProps> = ({apiUrl}) => {
           <TableHead className='table-header'>
             <TableRow>
                 {
-                    getHeadings(data).map((title) => (
-                        <TableCell>{title}</TableCell>
+                    getHeadings(data).map((title, i) => (
+                        <TableCell key={i}>{title}</TableCell>
                     ))
                 }
             </TableRow>
@@ -107,7 +113,7 @@ const XTable: React.FC<XTableProps> = ({apiUrl}) => {
                 <TableRow key={i}>
                     {
                         Object.values(row).map((value: any, j) => (
-                            <TableCell>{getRenderValue(value, j)}</TableCell>
+                            <TableCell key={j}>{getRenderValue(value, j)}</TableCell>
                         ))
                     }
                 </TableRow>

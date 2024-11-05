@@ -5,10 +5,10 @@ import axios from 'axios';
 import {config} from '../config'
 import './LoginPage.css';
 import XGoogleLogin from '../components/XGoogleLogin';
-import { TableRow } from '@mui/material';
+import { Table, TableBody, TableRow } from '@mui/material';
 
 
-const LOGIN_API = config.authApiUrl + "/api/login"
+const LOGIN_API = config.authApiUrl + "/login"
 const GUEST_EMAIL = import.meta.env.VITE_GUEST_EMAIL || "guest@guest.com";
 const GUEST_PASSWORD = import.meta.env.VITE_GUEST_PASSWORD || "easy";
 
@@ -90,25 +90,29 @@ function LoginPage() {
         { error ? 
           <div className='red-text-padding'>{error}</div>  
           : null
-        }
+        }    
 
-        <TableRow>
-          <td className='right-padding'>
-            <div className='bottom-padding'>
-              <Link component="button" variant="body2" onClick={() => loginAsGuest()}>Guest Login</Link>
-            </div>
-            <div>
-              <XGoogleLogin />
-            </div>
-          </td>
-          <td>
-            <div className='bottom-padding'>
-              <Link component="button" variant="body2" onClick={() => navigate('/register')}>Signup</Link>
-            </div>
-            {/* This component is not needed, remove it later */}
-            <Link component="button" variant="body2" onClick={() => navigate('/help')}></Link>
-          </td>
-        </TableRow>
+        <Table>
+          <TableBody>
+            <TableRow>
+              <td className='right-padding'>
+                <div className='bottom-padding'>
+                  <Link component="button" variant="body2" onClick={() => loginAsGuest()}>Guest Login</Link>
+                </div>
+                <div>
+                  <XGoogleLogin />
+                </div>
+              </td>
+              <td>
+                <div className='bottom-padding'>
+                  <Link component="button" variant="body2" onClick={() => navigate('/register')}>Signup</Link>
+                </div>
+                {/* This component is not needed, remove it later */}
+                <Link component="button" variant="body2" onClick={() => navigate('/help')}></Link>
+              </td>
+            </TableRow>
+          </TableBody>
+        </Table>    
       </form>
     </div>
   );

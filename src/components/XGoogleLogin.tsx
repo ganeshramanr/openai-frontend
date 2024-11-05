@@ -5,7 +5,7 @@ import { useGoogleLogin } from '@react-oauth/google';
 import Link from '@mui/material/Link';
 import {config} from '../config'
 
-const GOOGLE_LOGIN_API = config.authApiUrl + "/api/login/google"
+const GOOGLE_LOGIN_API = config.authApiUrl + "/login/google"
 const XGoogleLogin = () => {
   const navigate = useNavigate()
 
